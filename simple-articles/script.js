@@ -164,7 +164,6 @@ function openArticle(event) {
   
     sessionStorage.setItem("currentArticle", JSON.stringify(article));
   
-    // Determine the corresponding image index
     const imageIndex = parseInt(index) + 1;
   
     sessionStorage.setItem("currentImageIndex", imageIndex);
@@ -195,17 +194,14 @@ if (window.location.pathname.includes("article.html")) {
       fullArticleTitle.textContent = currentArticle.articleTitle;
       fullArticleContent.textContent = currentArticle.articleContent;
   
-      // Check if the current article has a header and subheader
       if (currentArticle.articleHeader && currentArticle.articleSubheader) {
         fullArticleHeader.textContent = currentArticle.articleHeader;
         fullArticleSubheader.textContent = currentArticle.articleSubheader;
       } else {
-        // If the header or subheader is not present, hide the corresponding elements
         fullArticleHeader.style.display = "none";
         fullArticleSubheader.style.display = "none";
       }
   
-      // Set the image source based on the currentImageIndex
       const currentImageIndex = sessionStorage.getItem("currentImageIndex");
       if (currentImageIndex) {
         articleImage.src = `./Img${currentImageIndex}.png`;
